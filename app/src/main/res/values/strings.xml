@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">График смен</string>
+
+    <string name="action_settings">Настройки</string>
+    <string name="action_about">О программе</string>
+    <string name="btn_select_date">Выбрать дату</string>
+    <string name="btn_ok">OK</string>
+
+    <string name="smena1">Смена №1</string>
+    <string name="smena2">Смена №2</string>
+    <string name="smena3">Смена №3</string>
+    <string name="smena4">Смена №4</string>
+
+    <string name="day">День</string>
+    <string name="night">Ночь</string>
+    <string name="afternight">С ночи</string>
+    <string name="holiday">Выходной</string>
+</resources>
