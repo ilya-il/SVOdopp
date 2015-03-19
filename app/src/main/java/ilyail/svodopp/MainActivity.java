@@ -47,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
         showDate(toDate(year, month, day));
     }
 
+    /* обработчик кнопки, используется в layout */
     public void onClick(View view) {
         DatePickerFragment date_picker = new DatePickerFragment();
 
