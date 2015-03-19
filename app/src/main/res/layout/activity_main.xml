@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Date"
+        android:text="@string/str_dummy"
         android:id="@+id/tvDate"
         android:layout_gravity="center_horizontal"
         android:textColor="@android:color/holo_red_light"
@@ -27,7 +27,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="."
             android:layout_centerHorizontal="true"
             android:id="@+id/tvCenter"
             android:visibility="invisible" />
@@ -44,7 +43,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="1"
+            android:text="@string/smena1"
             android:id="@+id/tvDay"
             android:layout_alignLeft="@+id/tvCenter"
             android:layout_marginLeft="30dp"
@@ -54,7 +53,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="2"
+            android:text="@string/smena2"
             android:id="@+id/tvNight"
             android:layout_alignLeft="@+id/tvDay"
             android:layout_below="@id/tvDay"/>
@@ -63,7 +62,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="3"
+            android:text="@string/smena3"
             android:id="@+id/tvAfterNight"
             android:layout_alignLeft="@+id/tvDay"
             android:layout_below="@id/tvNight"/>
@@ -72,7 +71,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="4"
+            android:text="@string/smena4"
             android:id="@+id/tvHoliday"
             android:layout_alignLeft="@+id/tvDay"
             android:layout_below="@id/tvAfterNight"/>
@@ -166,7 +165,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="1"
+            android:text="@string/day"
             android:id="@+id/tvShift1"
             android:layout_alignLeft="@+id/tvDay"
             android:layout_alignBaseline="@+id/textView5"/>
@@ -175,7 +174,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="2"
+            android:text="@string/night"
             android:id="@+id/tvShift2"
             android:layout_alignLeft="@+id/tvDay"
             android:layout_alignBaseline="@+id/textView6"/>
@@ -184,7 +183,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="3"
+            android:text="@string/afternight"
             android:id="@+id/tvShift3"
             android:layout_alignLeft="@+id/tvDay"
             android:layout_alignBaseline="@+id/textView7"/>
@@ -193,7 +192,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="4"
+            android:text="@string/holiday"
             android:id="@+id/tvShift4"
             android:layout_alignLeft="@+id/tvDay"
             android:layout_alignBaseline="@+id/textView8"/>

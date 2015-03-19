@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.support.v4.app.DialogFragment;
+import android.support.annotation.NonNull;
 
 /*
     Caution: If your app supports versions of Android lower than 3.0,
@@ -14,10 +15,11 @@ import android.support.v4.app.DialogFragment;
 */
 
 public class DatePickerFragment extends DialogFragment {
-    OnDateSetListener ondateSet;
+   private OnDateSetListener ondateSet;
 
     private int Year, Month, Day;
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         return new DatePickerDialog(getActivity(), ondateSet, Year, Month, Day);

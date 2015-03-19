@@ -18,6 +18,7 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Collections;
+import java.util.TimeZone;
 
 public class MainActivity extends ActionBarActivity {
     private TextView dateView;
@@ -29,6 +30,13 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         dateView = (TextView) findViewById(R.id.tvDate);
+
+        /*
+         *  Устанавливаем текущую зону в GMT,
+         *  чтобы настройки зоны в телефоне не влияли
+         *  на подсчет разницы между днями (летнее/зимнее время)
+         */
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
 
         // при старте отображаем текущий день
         Calendar cal;
@@ -53,23 +61,33 @@ public class MainActivity extends ActionBarActivity {
         date_picker.show(getSupportFragmentManager(), "datePicker");
     }
 
-    // диалог выбора даты через DialogFragment
-    private DatePickerDialog.OnDateSetListener myDateListener
+    /* диалог выбора даты через DialogFragment */
+    private final DatePickerDialog.OnDateSetListener myDateListener
             = new DatePickerDialog.OnDateSetListener() {
 
         @Override
-        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            // arg1 = year
-            // arg2 = month
-            // arg3 = day
-            year = arg1;
-            month = arg2;
-            day = arg3;
+        public void onDateSet(DatePicker p_view, int p_year, int p_month, int p_day) {
+            /*
+             * Костыль
+             * OnDateSetListener() вызывается один раз, если в диалоге выбора даты нажать Esc/Back
+             * и вызывается два раза, если нажать Done.
+             * Сделана проверка p_view.isShown() - теперь логика работает только один раз и только
+             * когда нажата Done.
+             *
+             * https://code.google.com/p/android/issues/detail?id=34833
+             * https://code.google.com/p/android/issues/detail?id=34860
+             */
+            if (p_view.isShown()) {
+                year = p_year;
+                month = p_month;
+                day = p_day;
 
-            showDate(toDate(arg1, arg2, arg3));
+                showDate(toDate(year, month, day));
+            }
         }
     };
 
+    /* отображение выбранной даты на экране */
     private void showDate(Date date) {
         SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy, EEEE", new Locale("ru"));
 
@@ -78,6 +96,7 @@ public class MainActivity extends ActionBarActivity {
         calcTimeShift(date);
     }
 
+    /* получение Date из тройки year-month-day */
     private Date toDate(int year, int month, int day) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, year);
@@ -91,7 +110,9 @@ public class MainActivity extends ActionBarActivity {
         return cal.getTime();
     }
 
-    // вычисляем кто как работает
+    /*
+        Основная функция вычисления графика.
+    */
     private void calcTimeShift(Date selected_date) {
         int days_mod;
 
@@ -115,14 +136,16 @@ public class MainActivity extends ActionBarActivity {
         tvShift3 = (TextView) findViewById(R.id.tvShift3);
         tvShift4 = (TextView) findViewById(R.id.tvShift4);
 
-        // базовая дата, на которую известен график
+        // базовая дата, на которую известен график - 11.03.2015
         base_date = toDate(2015, Calendar.MARCH, 11);
 
-        // порядок смен на базовую дату
-        // день     - 4
-        // ночь     - 3
-        // с ночи   - 2
-        // выходной - 1
+        /*
+            порядок смен на базовую дату
+            день     - 4
+            ночь     - 3
+            с ночи   - 2
+            выходной - 1
+        */
         base_shift_order[0] = getResources().getString(R.string.smena4);
         base_shift_order[1] = getResources().getString(R.string.smena3);
         base_shift_order[2] = getResources().getString(R.string.smena2);
@@ -153,6 +176,7 @@ public class MainActivity extends ActionBarActivity {
         tvShift4.setText(base_time_order[3]);
     }
 
+    /* меню программы */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
