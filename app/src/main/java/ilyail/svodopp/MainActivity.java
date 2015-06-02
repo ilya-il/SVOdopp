@@ -29,6 +29,12 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // по умолчанию Appcompat-v7 не отображает иконку в ActionBar - нужно ее включить
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_logo_sheremetevo);
+        // по умолчанию между иконкой и заголовком нет промежутка - добавим пробел
+        getSupportActionBar().setTitle(" " + getString(R.string.app_name));
+
         dateView = (TextView) findViewById(R.id.tvDate);
 
         /*
