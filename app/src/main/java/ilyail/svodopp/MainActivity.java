@@ -31,9 +31,8 @@ public class MainActivity extends ActionBarActivity {
 
         // по умолчанию Appcompat-v7 не отображает иконку в ActionBar - нужно ее включить
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setIcon(R.drawable.ic_logo_sheremetevo);
-        // по умолчанию между иконкой и заголовком нет промежутка - добавим пробел
-        getSupportActionBar().setTitle(" " + getString(R.string.app_name));
+        // в иконку забит костыль, чтобы между ней и названием программы был промежуток
+        getSupportActionBar().setIcon(R.drawable.actionbar_space_between_icon_and_title);
 
         dateView = (TextView) findViewById(R.id.tvDate);
 
